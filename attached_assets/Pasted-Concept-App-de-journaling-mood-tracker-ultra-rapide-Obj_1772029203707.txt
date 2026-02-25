@@ -1,0 +1,184 @@
+Concept
+App de journaling / mood tracker ultra rapide
+ Objectif : en 10 secondes, l’utilisateur peut marquer sa journée (habitudes / humeur) et, s’il veut, ajouter un mini-détail (texte + photo).
+Principes UX :
+1 tap = 1 action (cocher / décocher)
+Les détails sont optionnels, accessibles sans quitter l’écran (panneau léger)
+L’app est visuelle (calendrier + pastilles couleur)
+Design minimal, lisible, “Notion-like” mais sans complexité
+Typographie et ambiance proches d’Apple Journal : beaucoup d’air, titres nets, texte confortable
+
+
+Navigation principale (barre du bas)
+Barre de navigation fixe en bas avec 3 onglets :
+Tracker (à gauche)
+Calendrier (au centre)
+Paramètres (à droite)
+
+
+Au lancement, l’app s’ouvre par défaut sur Tracker (mode “check rapide”).
+
+Onglet 1 — Tracker (check rapide)
+Header (en haut)
+Centre : date affichée (ex: “Mardi 24 fév.”)
+Gauche : flèche ◀ pour jour -1
+Droite : flèche ▶ pour jour +1
+Au-dessus / sur la date : la date est cliquable
+Tap sur la date = ouvre une mini fenêtre calendrier (mois entier)
+On peut choisir directement un jour plus lointain
+Fermeture simple : tap à l’extérieur ou bouton ✕
+Tout à droite : bouton + pour ajouter (tracker ou famille)
+But : pouvoir cocher aujourd’hui, mais aussi revenir facilement sur un jour oublié.
+
+Liste des trackers (contenu principal)
+Affichage en liste verticale, organisée par familles (accordéons déroulants).
+ Style : sections bien espacées, lignes simples, très lisibles.
+Exemple :
+Sport 🔽 (déroulé)
+⭕ Pilates … (⋯)
+⭕ 10 000 pas … (⋯)
+
+
+Cuisine ▶️ (replié)
+Sans catégorie
+⭕ Méditation … (⋯)
+
+
+Règles d’affichage des familles
+Une famille peut être dépliée/repliée
+Un tracker peut être :
+dans une famille
+ou sans famille (section “Sans catégorie”)
+Possibilité d’avoir des familles vides (au début), ou de les supprimer
+Interaction d’un tracker (ligne)
+Chaque ligne contient :
+À gauche : un bouton rond ⭕ / ✅
+Tap = toggle (coché/décoché) pour la date sélectionnée
+Centre : nom du tracker (“Pilates”, “Lecture”, etc.)
+À droite : menu ⋯ (trois points)
+
+
+✅ Quand on coche : ça crée (ou enlève) une pastille de couleur pour ce tracker sur le jour correspondant dans le calendrier.
+ ➡️ Couleur liée au tracker (modifiable dans l’édition du tracker).
+Feedback ergonomique (très important)
+Quand on coche : petite animation légère (ex: check + micro vibration haptique)
+L’action doit être instantanée, sans écran intermédiaire
+
+
+
+Ajouter un tracker / ajouter une famille (bouton +)
+Quand on appuie sur + :
+ Un petit menu apparaît avec 2 choix :
+Ajouter un tracker
+Ajouter une famille
+
+
+Ajouter un tracker (formulaire minimal)
+Champs :
+Nom du tracker (obligatoire)
+Famille (optionnel : liste déroulante + “Sans catégorie”)
+Couleur (optionnel, sinon auto, différente de la couleur d’un tracker existant)
+Description permanente (optionnel)
+Cette description est visible via ⋯ et reste la même tous les jours
+
+
+Bouton : Créer
+Ajouter une famille
+Champs :
+Nom de la famille (obligatoire)
+ Optionnel :
+icône/emoji (ex: 🏃‍♂️, 🍳)
+ Bouton : Créer
+
+
+Détail rapide (sans changer de page) — menu ⋯
+Quand on appuie sur ⋯, on ouvre un mini panneau (bottom-sheet / popover) qui se ferme facilement (glisser vers le bas / croix ✕).
+Ce panneau contient, dans cet ordre :
+1) Infos du tracker (permanent)
+Nom du tracker
+Description permanente (si elle existe)
+
+
+2) Détails pour la date sélectionnée (journal du jour)
+Champ note courte (1–3 lignes) (en plus de la description permanente)
+Bouton Ajouter photo (icône appareil)
+Si une photo existe : miniature + bouton “Retirer”
+
+
+3) Actions rapides
+Modifier tracker (nom, famille, couleur, description permanente)
+Supprimer / Archiver (⚠️ voir règle ci-dessous)
+Objectif : on peut tout faire sans ouvrir une “nouvelle page lourde”.
+
+Gestion de l’ordre et suppression
+Dans l’écran Tracker : bouton “Modifier” (ou option dans un ⋯ global en haut) :
+Mode Modifier
+Réordonner les trackers par drag & drop (≡)
+Déplacer un tracker vers une autre famille
+Réordonner les familles (optionnel)
+
+
+Suppression / archivage d’un tracker
+Règle : archiver le tracker ne supprime pas l’historique du calendrier
+ Donc :
+Le tracker n’apparaît plus dans la liste
+Les anciennes pastilles restent visibles dans le calendrier
+Les anciennes notes/photos restent accessibles depuis le calendrier (si tu veux)
+
+
+
+Onglet 2 — Calendrier (vue globale)
+Vue principale
+Calendrier mensuel (grille)
+Chaque jour affiche 0 à plusieurs pastilles (petits ronds colorés)
+Un tracker coché ce jour-là = une pastille de sa couleur
+Les pastilles sont alignées “en rang”, et si trop nombreuses :
+soit elles se compactent (petites)
+soit on met “+3” après un certain nombre (recommandé)
+
+
+Interaction
+Tap sur un jour = ouvre une fiche du jour (panneau ou page) :
+Contenu de la fiche du jour :
+Date + résumé (ex: “3 trackers cochés”)
+Liste des trackers (avec leurs couleurs)
+Possibilité de cocher/décocher directement pour ce jour
+Notes/photos associées à chaque tracker (date + tracker)
+On voit le texte + la photo (si existante)
+Bouton “Fermer” / glisser bas
+Navigation mois : swipe horizontal
+
+
+Objectif : le calendrier sert de tableau de bord visuel, mais l’édition reste simple.
+
+Onglet 3 — Paramètres
+Contenu minimal :
+Mode clair / sombre
+Réinitialiser
+“Réinitialiser données” (tout effacer) + confirmation
+“Réinitialiser interface” (ordre, préférences)
+
+
+
+
+
+Détails importants
+Un tracker = une couleur (par défaut), même partout (Tracker + Calendrier).
+Un tracker coché sur une date = un événement sauvegardé pour ce jour.
+Notes/photos sont liées à (date + tracker), pas juste à la date.
+Si un tracker est supprimé/archivé :
+il disparaît de la liste
+son historique reste visible dans le calendrier (pastilles + détails)
+
+
+Si on change la couleur d’un tracker : ça change aussi l’historique
+
+Direction UI (style “Notion ultra simple” + “Apple Journal”)
+Fond clair avec beaucoup d’espace
+Typo propre, tailles lisibles, titres simples
+Icônes minimalistes (flèches, ⋯, +, check)
+Panneaux “bottom-sheet” très fluides (pas de gros écrans)
+Animations légères + haptique discret
+
+
+

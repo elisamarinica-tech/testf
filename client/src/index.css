@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'DM Sans', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* Apple-like Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
+    
+    --card: 240 20% 98%;
+    --card-foreground: 240 10% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    
+    --primary: 240 10% 10%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 10% 94%;
+    --secondary-foreground: 240 10% 10%;
+    
+    --muted: 240 10% 96%;
+    --muted-foreground: 240 5% 45%;
+    
+    --accent: 240 10% 96%;
+    --accent-foreground: 240 10% 10%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 92%;
+    --input: 240 10% 92%;
+    --ring: 240 10% 10%;
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Apple-like Dark Mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 5% 10%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 5% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5% 10%;
+    
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 240 5% 15%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 15%;
+    --input: 240 5% 20%;
+    --ring: 240 5% 80%;
+  }
+
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-neutral-100 dark:bg-neutral-950 text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Custom scrollbar for webkit to keep it clean */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.border');
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.muted.foreground');
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 20px);
+  }
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60;
+  }
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl supports-[backdrop-filter]:bg-card/60;
+  }
+}
